@@ -18,7 +18,7 @@
     background-size: cover;
     z-index: -1;
     opacity: 0;
-    animation: changeBackground 21s ease 3s infinite, appearanceElement 1s ease 3s forwards;
+    animation: changeBackground 10s linear 3s forwards, appearanceElement 1s ease 3s forwards;
   }
 
   &__container{
@@ -191,19 +191,22 @@
 @keyframes changeBackground {
   0% {
     background-image: url('../images/banner-bg.webp');
-    transform: scale(1.1);
-  }
-  25% {
-  }
-
-  50% {
-    background-image: url('../images/banner-bg-2.webp');
     transform: scale(1);
   }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
   75% {
+    background-image: url('../images/banner-bg-2.webp');
+    transform: scale(1.15);
   }
   100% {
-    transform: scale(1.1);
-    background-image: url('../images/banner-bg.webp');
+    background-image: url('../images/banner-bg-2.webp');
+    transform: scale(1.2);
   }
 }
+
+

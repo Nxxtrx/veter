@@ -1,7 +1,6 @@
 @import '../../mixins';
 
 .popup {
-  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -11,6 +10,7 @@
   justify-content: center;
   z-index: 10;
   background-color: rgba(49, 70, 100, 0.7);
+  opacity: 0;
 
   &__overlay {
     width: 1098px;
@@ -63,6 +63,15 @@
     box-sizing: border-box;
     padding-inline: 82px 78px;
     border-image: url('../images/forma.svg') 17 / 15px / 0px stretch;
+
+    &_type_success {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      min-height: min-content;
+      padding-block: 40px;
+      border: 1px solid var(--color-white);
+    }
 
     @media screen and (max-width: 700px) {
       & {
@@ -143,6 +152,10 @@
     font-weight: 600;
     @include fluid-text(45, 25);
     color: var(--color-white);
+
+    &_type_success{
+      margin-top: 0;
+    }
 
     @media screen and (max-width: 700px) {
       & {
@@ -268,13 +281,60 @@
     @include fluid-text(13, 10);
     line-height: normal;
     color: var(--color-white);
+
+    a {
+      color: var(--color-white);
+    }
+  }
+
+  &__text {
+    color: var(--color-light);
+  }
+
+  &__btn {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    width: 200px;
+    padding-block: 10px;
+    border: 1px solid var(--color-white);
+    align-self: center;
   }
 }
 
-.opened {
-  display: flex;
+.closed {
+  display: none;
+  opacity: 0;
+  animation: closePopup .4s ease forwards;
 }
 
+.opened {
+  opacity: 1;
+  animation: popupOpen 1s ease forwards;
+}
+
+@keyframes popupOpen {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+
+@keyframes closePopup {
+  0% {
+    opacity: 1;
+    display: flex;
+  }
+  90% {
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
 
 @keyframes cloudLeftTransform {
   0% {

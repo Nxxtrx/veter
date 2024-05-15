@@ -20,14 +20,14 @@
           <div class="banner__description-container">
             <p class="banner__description">
               Застройщик ООО “СЗ СУ1-ЗАТОН”. Проектная декларация размещена на сайте
-              <a class="banner__link" href="#">наш.дом.рф</a>
+              <a class="banner__link" href="https://xn--80az8a.xn--d1aqf.xn--p1ai/">наш.дом.рф</a>
             </p>
-            <a class="banner__link" href="#">Политика конфиденциальности</a>
+            <a class="banner__link" target="_blank" href="../src/vendor/document/09a0533a-1a45-4808-a5c5-84cb729a39f1.pdf">Политика конфиденциальности</a>
           </div>
           <div class="banner__bottom-overlay"></div>
         </div>
       </section>
-      <section class="popup">
+      <section class="popup closed">
         <div class="popup__overlay">
           <img class="popup__cloud popup__cloud_type_right" src="./images/popup-cloud-right.png"  alt="Облако">
           <img class="popup__cloud popup__cloud_type_left" src="./images/popup-cloud-left.png"  alt="Облако">
@@ -46,9 +46,18 @@
               <button class="popup__btn-submit popup__btn-submit_type_disabled">Узнать подробности</button>
               <div class="popup__checkbox-container">
                 <input type="checkbox" name="checkbox" class="popup__checkbox">
-                <label class="popup__label popup__label_type_checkbox">Нажимая кнопку, Вы соглашаетесь на обработку персональных данных.</label>
+                <label class="popup__label popup__label_type_checkbox">Нажимая кнопку, Вы соглашаетесь на обработку <a href="../src/vendor/document/09a0533a-1a45-4808-a5c5-84cb729a39f1.pdf" target="_blank" >персональных данных.</a></label>
               </div>
             </form>
+          </div>
+        </div>
+      </section>
+      <section class="popup popup_type_success closed">
+        <div class="popup__overlay">
+          <div class="popup__container popup__container_type_success">
+            <h2 class="popup__title popup__title_type_success">Данные<br>успешно<br>отправлены</h2>
+            <p class="popup__text">Мы перезвоним Вам в<br>ближайшее время</p>
+            <button class="popup__btn popup__btn_type_success">Закрыть</button>
           </div>
         </div>
       </section>

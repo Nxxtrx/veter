@@ -378,7 +378,7 @@ h1, h2, h3, h4, h5, h6, p {
   background-size: cover;
   z-index: -1;
   opacity: 0;
-  animation: changeBackground 21s ease 3s infinite, appearanceElement 1s ease 3s forwards;
+  animation: changeBackground 10s linear 3s forwards, appearanceElement 1s ease 3s forwards;
 }
 .banner__container {
   display: flex;
@@ -534,19 +534,24 @@ h1, h2, h3, h4, h5, h6, p {
 @keyframes changeBackground {
   0% {
     background-image: url("../images/banner-bg.webp");
-    transform: scale(1.1);
-  }
-  50% {
-    background-image: url("../images/banner-bg-2.webp");
     transform: scale(1);
   }
-  100% {
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
     transform: scale(1.1);
-    background-image: url("../images/banner-bg.webp");
+  }
+  75% {
+    background-image: url("../images/banner-bg-2.webp");
+    transform: scale(1.15);
+  }
+  100% {
+    background-image: url("../images/banner-bg-2.webp");
+    transform: scale(1.2);
   }
 }
 .popup {
-  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -556,6 +561,7 @@ h1, h2, h3, h4, h5, h6, p {
   justify-content: center;
   z-index: 10;
   background-color: rgba(49, 70, 100, 0.7);
+  opacity: 0;
 }
 .popup__overlay {
   width: 1098px;
@@ -603,6 +609,15 @@ h1, h2, h3, h4, h5, h6, p {
   padding-inline: 82px 78px;
   -o-border-image: url("../images/forma.svg") 17/15px/0px stretch;
      border-image: url("../images/forma.svg") 17/15px/0px stretch;
+}
+.popup__container_type_success {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-height: -moz-min-content;
+  min-height: min-content;
+  padding-block: 40px;
+  border: 1px solid var(--color-white);
 }
 @media screen and (max-width: 700px) {
   .popup__container {
@@ -677,6 +692,9 @@ h1, h2, h3, h4, h5, h6, p {
   font-weight: 600;
   font-size: clamp(25px, 45 / 1920 * 100vw, 45px);
   color: var(--color-white);
+}
+.popup__title_type_success {
+  margin-top: 0;
 }
 @media screen and (max-width: 700px) {
   .popup__title {
@@ -787,11 +805,52 @@ h1, h2, h3, h4, h5, h6, p {
   line-height: normal;
   color: var(--color-white);
 }
-
-.opened {
-  display: flex;
+.popup__label_type_checkbox a {
+  color: var(--color-white);
+}
+.popup__text {
+  color: var(--color-light);
+}
+.popup__btn {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  width: 200px;
+  padding-block: 10px;
+  border: 1px solid var(--color-white);
+  align-self: center;
 }
 
+.closed {
+  display: none;
+  opacity: 0;
+  animation: closePopup 0.4s ease forwards;
+}
+
+.opened {
+  opacity: 1;
+  animation: popupOpen 1s ease forwards;
+}
+
+@keyframes popupOpen {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: flex;
+  }
+}
+@keyframes closePopup {
+  0% {
+    opacity: 1;
+    display: flex;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
 @keyframes cloudLeftTransform {
   0% {
     transform: translateX(0px);
