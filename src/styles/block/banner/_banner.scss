@@ -1,45 +1,102 @@
-.banner {
-  // position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 80px;
-  // background-image: url('../images/banner-bg.png');
-  // background-repeat: no-repeat;
-  // background-size:cover;
-  padding-top: 150px;
-  padding-bottom: 43px;
+@import '../../mixins';
 
+.banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0;
+    animation: changeBackground 21s ease 3s infinite, appearanceElement 1s ease 3s forwards;
+  }
+
+  &__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+    padding-top: 150px;
+    padding-bottom: 43px;
+    width: 100%;
+    overflow: hidden;
+
+    @media screen and (max-width: 700px) {
+      padding-top: 114px;
+      min-width: 315px;
+    }
+  }
+
+  &__vector-container {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: 1788px) {
+      & {
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
 
   &__vector{
-    position: absolute;
     z-index: 1;
 
     &_type_left{
-      top: 0;
-      left: 0;
+      transform: translateY(100px);
+      clip-path: inset(0 100% 0 0);
+      animation: reveal 2s ease-in-out forwards, transform .5s ease 2.5s forwards;
     }
 
     &_type_right{
-      top: 0;
-      right: 0;
+      transform: translateY(100px);
+      clip-path: inset(0 0 0 100%);
+      animation: reveal 2s ease-in-out forwards, transform .5s ease 2.5s forwards;
     }
+
   }
 
   &__logo {
-    width: 480px;
+    max-width: 480px;
+    width: 100%;
     z-index: 2;
+    opacity: 0;
+    transform: scale(1.2) translateY(100px);
+    animation: appearanceElement 1s ease-in-out 1s forwards, transformAndScale .5s ease 2.5s forwards;
+
+    @media screen and (max-width: 700px) {
+      max-width: 290px;
+    }
   }
 
   &__title {
-    font-size: 43px;
+    @include fluid-text(43, 26);
     letter-spacing: .05em;
     color: var(--color-light);
     font-weight: 400;
     text-transform: uppercase;
     text-align: center;
     z-index: 2;
+    opacity: 0;
+    transform: scale(.9) translateY(100px);
+    animation: appearanceElement .5s ease-in-out 2.5s forwards, transformAndScale .5s ease 2.5s forwards;
   }
 
   &__btn{
@@ -51,20 +108,49 @@
     font-size: 16px;
     font-weight: 600;
     z-index: 2;
+    opacity: 0;
+    transform: scale(.9) translateY(100px);
+    animation: appearanceElement .5s ease-in-out 2.5s forwards, transformAndScale .5s ease 2.5s forwards;
+    transition: background-color .2s ease-in-out;
+
+    &:hover{
+      background-color: #6e87a8;
+    }
+
+    @media screen and (max-width: 700px) {
+      & {
+        width: 225px;
+      }
+    }
   }
 
   &__description-container{
     text-align: center;
-    font-size: 14px;
+    @include fluid-text(14, 10);
     font-weight: 400;
     line-height: 1.4;
     color: var(--color-white);
     margin-top: 10px;
     z-index: 2;
+    opacity: 0;
+    transform: scale(.9) translateY(100px);
+    animation: appearanceElement .5s ease-in-out 2.5s forwards, transformAndScale .5s ease 2.5s forwards;
+
+    @media screen and (max-width: 700px) {
+      & {
+        max-width: 295px;
+        text-align: center;
+        margin-top: -20px;
+      }
+    }
   }
 
   &__link{
     color: var(--color-white);
+
+    &:hover{
+      opacity: .7;
+    }
   }
 
   &__bottom-overlay {
@@ -74,5 +160,50 @@
     bottom: 0;
     background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, #314664 100%);
     z-index: 1;
+  }
+}
+
+
+@keyframes reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes appearanceElement{
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes transformAndScale {
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes transform {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes changeBackground {
+  0% {
+    background-image: url('../images/banner-bg.webp');
+    transform: scale(1.1);
+  }
+  25% {
+  }
+
+  50% {
+    background-image: url('../images/banner-bg-2.webp');
+    transform: scale(1);
+  }
+  75% {
+  }
+  100% {
+    transform: scale(1.1);
+    background-image: url('../images/banner-bg.webp');
   }
 }

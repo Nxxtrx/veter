@@ -9,19 +9,23 @@
   <body>
     <div id="root">
       <section class="banner">
-        <img class="banner__vector banner__vector_type_left" src="./images/banner-vector-left.svg" alt="Левая часть баннера">
-        <img class="banner__vector banner__vector_type_right" src="./images/banner-vector-right.svg" alt="Правая часть баннера">
-        <img class="banner__logo" src="./images/logo.svg" alt="Логотип копании Veter"/>
-        <h1 class="banner__title">Атмосферный<br>квартал</h1>
-        <button class="banner__btn">Узнать подробности</button>
-        <div class="banner__description-container">
-          <p class="banner__description">
-            Застройщик ООО “СЗ СУ1-ЗАТОН”. Проектная декларация размещена на сайте
-            <a class="banner__link" href="#">наш.дом.рф</a>
-          </p>
-          <a class="banner__link" href="#">Политика конфиденциальности</a>
+        <div class="banner__container">
+          <div class="banner__vector-container">
+            <img class="banner__vector banner__vector_type_left" src="./images/banner-vector-left.svg" alt="Левая часть баннера">
+            <img class="banner__vector banner__vector_type_right" src="./images/banner-vector-right.svg" alt="Правая часть баннера">
+          </div>
+          <img class="banner__logo" src="./images/logo.svg" alt="Логотип копании Veter"/>
+          <h1 class="banner__title">Атмосферный<br>квартал</h1>
+          <button class="banner__btn">Узнать подробности</button>
+          <div class="banner__description-container">
+            <p class="banner__description">
+              Застройщик ООО “СЗ СУ1-ЗАТОН”. Проектная декларация размещена на сайте
+              <a class="banner__link" href="#">наш.дом.рф</a>
+            </p>
+            <a class="banner__link" href="#">Политика конфиденциальности</a>
+          </div>
+          <div class="banner__bottom-overlay"></div>
         </div>
-        <div class="banner__bottom-overlay"></div>
       </section>
       <section class="popup">
         <div class="popup__overlay">
@@ -35,13 +39,13 @@
               <p class="popup__decoration-text">Ожидаются осадки в виде плюсов</p>
               <img class="popup__decoration-img" src="./images/popup-clouds.svg" alt="Облака">
             </div>
-            <h2 class="popup__title">Узнайте подробности</h2>
+            <h2 class="popup__title">Узнайте<br>подробности</h2>
             <form class="popup__form">
-              <input type="text" class="popup__input" placeholder="Имя">
-              <input type="number" class="popup__input" placeholder="Телефон">
-              <button class="popup__btn-submit">Узнать подробности</button>
+              <input type="text" name="name" class="popup__input" placeholder="Имя">
+              <input type="text" name="phone" class="popup__input popup__input_type_phone" placeholder="Телефон">
+              <button class="popup__btn-submit popup__btn-submit_type_disabled">Узнать подробности</button>
               <div class="popup__checkbox-container">
-                <input type="checkbox" class="popup__checkbox">
+                <input type="checkbox" name="checkbox" class="popup__checkbox">
                 <label class="popup__label popup__label_type_checkbox">Нажимая кнопку, Вы соглашаетесь на обработку персональных данных.</label>
               </div>
             </form>
@@ -49,6 +53,7 @@
         </div>
       </section>
     </div>
+    <script src="https://unpkg.com/imask"></script>
     <script src="./index.js"></script>
   </body>
 </html>

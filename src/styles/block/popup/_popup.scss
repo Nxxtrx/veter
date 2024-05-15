@@ -1,8 +1,10 @@
+@import '../../mixins';
+
 .popup {
   display: none;
-  position: absolute;
+  position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
   align-items: center;
@@ -25,12 +27,29 @@
     &_type_left {
       bottom: 10px;
       left: 35px;
+      animation: cloudLeftTransform 20s ease-in-out infinite;
+
+      @media screen and (max-width: 700px) {
+        & {
+          width: 440px;
+          bottom: 100px;
+        }
+      }
     }
 
     &_type_right {
       top: 0;
       right: 0;
+      animation: cloudRightTransform 20s ease-in-out infinite;
+
+      @media screen and (max-width: 700px) {
+        & {
+          width: 326px;
+          top: 100px;
+        }
+      }
     }
+
   }
 
   &__container {
@@ -44,6 +63,19 @@
     box-sizing: border-box;
     padding-inline: 82px 78px;
     border-image: url('../images/forma.svg') 17 / 15px / 0px stretch;
+
+    @media screen and (max-width: 700px) {
+      & {
+        box-sizing: border-box;
+        padding-inline: 43px;
+        margin-inline: 42px;
+        min-width: 291px;
+        min-height: min-content;
+        border-image: none;
+        border: 1px solid var(--color-white);
+        border-radius: 25px;
+      }
+    }
   }
 
   &__close-btn {
@@ -60,6 +92,14 @@
       object-fit: cover;
       width: 100%;
     }
+
+    @media screen and (max-width: 700px) {
+      & {
+        width: 21px;
+        top: 16px;
+        left: 16px;
+      }
+    }
   }
 
   &__decoration {
@@ -67,11 +107,19 @@
     right: 51px;
     top: 39px;
     max-width: 162px;
+
+    @media screen and (max-width: 700px) {
+      & {
+        max-width: 111px;
+        right: 15px;
+        top: 22px;
+      }
+    }
   }
 
   &__decoration-text {
     font-weight: 600;
-    font-size: 15px;
+    @include fluid-text(15, 10);
     color: var(--color-white);
     margin-left: 5px;
   }
@@ -80,26 +128,46 @@
     margin-top: 21px;
     width: 152px;
     height: 152px;
+
+    @media screen and (max-width: 700px) {
+      & {
+        margin-top: 7.6px;
+        width: 85px;
+        height: min-content;
+      }
+    }
   }
 
   &__title {
     margin-top: 211px;
     font-weight: 600;
-    font-size: 45px;
+    @include fluid-text(45, 25);
     color: var(--color-white);
+
+    @media screen and (max-width: 700px) {
+      & {
+        margin-top: 118px;
+      }
+    }
   }
 
   &__form {
     display: flex;
     flex-direction: column;
     margin-top: 52px;
+
+    @media screen and (max-width: 700px) {
+      & {
+        margin-top: 30px;
+      }
+    }
   }
 
   &__input {
     border: none;
     border-bottom: 1px solid var(--color-white);
     background-color: inherit;
-    font-size: 26px;
+    @include fluid-text(26, 14);
     color: var(--color-white);
     padding: 0 0 9px 0;
 
@@ -113,6 +181,12 @@
 
     &:nth-child(2) {
       margin-top: 31px;
+
+      @media screen and (max-width: 700px) {
+        & {
+          margin-top: 17px;
+        }
+      }
     }
   }
 
@@ -120,17 +194,41 @@
     margin-top: 50px;
     border: 2px solid var(--color-light);
     color: var(--color-white);
-    font-size: 21px;
+    @include fluid-text(21, 12);
     font-weight: 700;
     background-color: inherit;
     padding-block: 17px;
+    transition: background-color 0.3s ease;
+
+    &_type_disabled {
+      background-color: #a19e9e;
+      cursor: auto;
+    }
+
+
+    &:hover:not(:disabled) {
+      background-color: #a6b3c5;
+    }
+
+    @media screen and (max-width: 700px) {
+      & {
+        margin-top: 28px;
+      }
+    }
   }
 
   &__checkbox-container {
     display: flex;
     gap: 18px;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 22px;
+
+    @media screen and (max-width: 700px) {
+      & {
+        margin-top: 30px;
+        margin-bottom: 36px;
+      }
+    }
   }
 
   &__checkbox {
@@ -157,21 +255,47 @@
       background-position: center;
     }
 
-    &__label_type_checkbox {
-      font-weight: 500;
-      font-size: 13px;
-      color: var(--color-white);
+    @media screen and (max-width: 700px) {
+      & {
+        width: 13px;
+        height: 13px;
+      }
     }
   }
 
   &__label_type_checkbox {
     font-weight: 500;
-    font-size: 13px;
+    @include fluid-text(13, 10);
     line-height: normal;
     color: var(--color-white);
   }
 }
 
 .opened {
-display: flex;
+  display: flex;
+}
+
+
+@keyframes cloudLeftTransform {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes cloudRightTransform {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
