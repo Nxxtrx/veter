@@ -98,6 +98,5 @@ form.addEventListener("submit", (event) => {
   popup.classList.add('closed')
   popupSuccess.classList.remove('closed')
   popupSuccess.classList.add("opened");
-  page.style.overflow = "auto";
   form.reset();
 });
