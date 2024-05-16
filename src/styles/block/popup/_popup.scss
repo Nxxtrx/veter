@@ -16,6 +16,7 @@
   &__overlay {
     // width: 1098px;
     // height: 985px;
+    position: relative;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -26,8 +27,8 @@
     position: absolute;
 
     &_type_left {
-      bottom: 10px;
-      left: 35px;
+      bottom: 0;
+      right: 200px;
       animation: cloudLeftTransform 20s ease-in-out infinite;
 
       @media screen and (max-width: 700px) {
@@ -39,8 +40,8 @@
     }
 
     &_type_right {
-      top: 0;
-      right: 0;
+      top: 0px;
+      left: 200px;
       animation: cloudRightTransform 20s ease-in-out infinite;
 
       @media screen and (max-width: 700px) {
@@ -143,7 +144,7 @@
       & {
         margin-top: 7.6px;
         width: 85px;
-        height: min-content;
+        height: auto;
       }
     }
   }

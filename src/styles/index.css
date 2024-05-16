@@ -564,6 +564,7 @@ h1, h2, h3, h4, h5, h6, p {
   opacity: 0;
 }
 .popup__overlay {
+  position: relative;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -573,8 +574,8 @@ h1, h2, h3, h4, h5, h6, p {
   position: absolute;
 }
 .popup__cloud_type_left {
-  bottom: 10px;
-  left: 35px;
+  bottom: 0;
+  right: 200px;
   animation: cloudLeftTransform 20s ease-in-out infinite;
 }
 @media screen and (max-width: 700px) {
@@ -584,8 +585,8 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 .popup__cloud_type_right {
-  top: 0;
-  right: 0;
+  top: 0px;
+  left: 200px;
   animation: cloudRightTransform 20s ease-in-out infinite;
 }
 @media screen and (max-width: 700px) {
@@ -681,8 +682,7 @@ h1, h2, h3, h4, h5, h6, p {
   .popup__decoration-img {
     margin-top: 7.6px;
     width: 85px;
-    height: -moz-min-content;
-    height: min-content;
+    height: auto;
   }
 }
 .popup__title {
