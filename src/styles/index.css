@@ -564,12 +564,9 @@ h1, h2, h3, h4, h5, h6, p {
   opacity: 0;
 }
 .popup__overlay {
-  width: 1098px;
-  height: 985px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 .popup__cloud {
   position: absolute;
